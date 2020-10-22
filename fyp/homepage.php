@@ -16,25 +16,28 @@
 
       // Create connection
       $conn = new mysqli($servername, $username, $password, $dbName);
-
+    session_start();
       $sql = "SELECT * FROM assets";
       $result = $conn->query($sql);
       while ($row = $result -> fetch_assoc()) {
       	$rows[] = $row;
       	} 
       	$assetJson = json_encode($rows);
-    session_start();
+    $type = $_SESSION["type"];
+    $id = $_SESSION["loginid"];
     if(isset($_POST['checkin'])){
+       
  
 // alif take a look here. we need to obtain the id or username from the login.php and match it with where id = ______ that's it
-    $allowed = mysqli_query($conn," UPDATE users SET checkedIn = 1 WHERE id = 1");
+    $allowed = mysqli_query($conn," UPDATE users SET checkedIn = 1 WHERE id = $id");
 
 }
 
 if(isset($_POST['checkout'])){
-
-    $notallowed = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =1 ");
+        
+    $notallowed = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =$id ");
 }
+    
     ?>
 
 
@@ -48,8 +51,6 @@ if(isset($_POST['checkout'])){
 
             <div id="topheadnav">
                 <?php
-	            session_start();
-
                 /*if(isset($_SESSION["loginstatus"]) && $_SESSION["loginstatus"] === "Admin"){
 		          echo 'Welcome';
                 }*/
@@ -59,11 +60,13 @@ if(isset($_POST['checkout'])){
 		              echo $_SESSION["username"].'<a href="logout.php" class="loginbutton">&nbsp; &nbsp; &nbsp; | &nbsp; logout</a>';
 
 echo '<div>
-    <form method="post" action="">
-
+    <form method="post" action="">';
+if ($type ==1 || $type == 3){
+    echo'
         <button type="submit" name="checkin" id="checkin" class="btn-success">Check in</button>
-        <button type="submit" name="checkout" id="checkout" class="btn-danger">Check out</button>
-
+        <button type="submit" name="checkout" id="checkout" class="btn-danger">Check out</button>';
+}
+echo'
     </form>
 
 
