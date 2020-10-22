@@ -23,24 +23,22 @@
       	$rows[] = $row;
       	} 
       	$assetJson = json_encode($rows);
-    $_SESSION["type"]=0;
-    $_SESSION["loginid"] = 0;
+   
     $type = $_SESSION["type"];
     $id = $_SESSION["loginid"];
-    $timestamp = time();
+    $timestamp = date('Y-m-d H:i:s');
     if(isset($_POST['checkin'])){
        
  
-// alif take a look here. we need to obtain the id or username from the login.php and match it with where id = ______ that's it
-    $allowed = mysqli_query($conn," UPDATE users SET checkedIn = 1 WHERE id = $id");
-   $allowed = mysqli_query($conn," UPDATE users SET TimeIn = $timestamp WHERE id = $id");
+    $query = mysqli_query($conn," UPDATE users SET checkedIn = 1 WHERE id = $id");
+   $query = mysqli_query($conn," UPDATE users SET TimeIn = $timestamp WHERE id = $id");
 
 }
 
 if(isset($_POST['checkout'])){
         
-    $notallowed = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =$id ");
-       $allowed = mysqli_query($conn," UPDATE users SET TimeOut = $timestamp WHERE id = $id");
+    $query = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =$id ");
+       $query = mysqli_query($conn," UPDATE users SET TimeOut = $timestamp WHERE id = $id");
 }
     
     ?>
@@ -66,10 +64,11 @@ if(isset($_POST['checkout'])){
 
 echo '<div>
     <form method="post" action="">';
-if ($type ==1 || $type == 3){
+if ($type ==2){
     echo'
         <button type="submit" name="checkin" id="checkin" class="btn-success">Check in</button>
         <button type="submit" name="checkout" id="checkout" class="btn-danger">Check out</button>';
+                      
 }
 echo'
     </form>

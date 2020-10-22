@@ -82,12 +82,11 @@ function test_input($username,$password) {
 	}
 	if($match == true){
 		session_start();
-        //alif take a look, the session variables are passed on
-        // need to obtain username or id on the homepage
+    
 		$_SESSION["loggedin"] = true;
 		$_SESSION["username"] = $_POST["username"];
-		$_SESSION["loginid"] = $_POST["id"];
-        $_SESSION["type"] = $_POST["type"];
+		$_SESSION["loginid"] = $id;
+        $_SESSION["type"] = $type;
 		//$_SESSION["loginstatus"] = $status;
 		if($type == "1" || $type == "2" || $type == "3"){
 			header("refresh: 0; url=homepage.php");
