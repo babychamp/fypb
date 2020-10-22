@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2020 at 02:21 AM
+-- Generation Time: Oct 22, 2020 at 08:51 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -74,16 +74,18 @@ CREATE TABLE `users` (
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `checkedin` tinyint(1) NOT NULL
+  `checkedin` tinyint(1) NOT NULL,
+  `TimeIn` timestamp(6) NULL DEFAULT NULL,
+  `TimeOut` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `type`, `username`, `password`, `email`, `checkedin`) VALUES
-(1, 1, 'admin', 'admin', 'jtang0308@gmail.com', 1),
-(2, 2, 'power', 'power', 'power@power.com', 1);
+INSERT INTO `users` (`id`, `type`, `username`, `password`, `email`, `checkedin`, `TimeIn`, `TimeOut`) VALUES
+(1, 1, 'admin', 'admin', 'jtang0308@gmail.com', 0, NULL, NULL),
+(2, 2, 'employee', 'employee', 'employee@gmail.com', 0, '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000');
 
 -- --------------------------------------------------------
 
