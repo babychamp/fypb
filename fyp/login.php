@@ -1,43 +1,13 @@
-<?php echo '
-<!DOCTYPE html>
-<html>
-<title>Login</title>
-<meta charset="UTF-8">
+<?php
+	// start the session()
+	//session_start();
+	require "Include/header.php";
+?>
 
-<link rel="stylesheet" type="text/css"href="style.css">
-<script src="font.js" crossorigin="anonymous"></script>
-<body>
-
-	<header>
-		<div id="header-content">
-	
-			<div id="website-logo">
-				<img src="img/jps.png" alt="logo" id="logo" onclick="location.href=\'homepage.php\'">
-			</div>
+<h1>Login</h1>
+<?php
 
 
-		</div>
-	
-	</header>
-		
-	<h1>Login</h1>';
-
-	Function connect(){
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$dbname = "fyp";
-	
-		// Create connection
-		$conn = new mysqli($servername, $username, $password,$dbname);
-
-		// Check connection
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		}
-		return $conn;
-		}
-	$conn = connect();
 
 
 
