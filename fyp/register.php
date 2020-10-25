@@ -36,7 +36,7 @@ if (isset($_POST['register-submit'])){
 						alert("Passwords do not match. Please try again.");
 					</script>';
 			}else{
-				$sql = "INSERT INTO userdb (id, type, username, password, email) VALUES (?, ?, ?, ?, ?)";
+				$sql = "INSERT INTO users (id, type, username, password, email) VALUES (?, ?, ?, ?, ?)";
 			$stmt = mysqli_stmt_init($conn);
 			if(!mysqli_stmt_prepare($stmt, $sql)){
 				echo '<script type="text/javascript">
@@ -63,17 +63,17 @@ if (isset($_POST['register-submit'])){
 
 <!-- HTML CODE -->
 <div class="register-input-field">
-    <h3>Register</h3>
-    <form id="register" method="POST">
+    <h1>Register</h1>
+    <form id="loginform" method="POST">
         <div class="form-group">
             <label>Id </label>
             <label class="required">*</label>
-            <input type="number" class="form-control" name="id" placeholder="id" required />
+            <input type="int" class="form-control" name="id" placeholder="id" required />
         </div>
         <div class="form-group">
             <label>Type</label>
             <label class="required">*</label>
-            <input type="number" class="form-control" name="type" placeholder="type" required />
+            <input type="int" class="form-control" name="type" placeholder="type" required />
         </div>
         <div class="form-group">
             <label>Username </label>

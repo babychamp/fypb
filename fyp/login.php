@@ -7,11 +7,6 @@
 <h1>Login</h1>
 <?php
 
-
-
-
-
-		
 	echo'<form id="loginform" method="post" action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'">
 		<label for="username">Username: </label><br>
 		<input type="text" name="username" class="logininput"><br><br>
