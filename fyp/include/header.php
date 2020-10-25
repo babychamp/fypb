@@ -59,8 +59,7 @@ echo'
 
 
 </div>';
-               //echo '</br><button onclick="checkIn()">Check in</button>';
-                //      echo '</a><button onclick ="checkOut()">Check out</button>';
+             
 	              }else{
                       echo'<a href ="register.php" class = "loginbutton">Register</a> &nbsp; &nbsp;';
 		              echo'<a href="login.php" class="loginbutton">Login</a>';
@@ -72,7 +71,7 @@ echo'
 
                 </div>
                 <div id="website-logo">
-                    <img src="img/jps.png" alt="logo" id="logo" onclick="location.href=\'homepage.php\'">
+                    <img src="img/jps.png" alt="logo" id="logo">
                 </div>';
 
 
