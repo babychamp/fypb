@@ -11,28 +11,6 @@
       	$rows[] = $row;
       	} 
       	$assetJson = json_encode($rows);
-
-session_start();
-   
-
-    $type = $_SESSION["type"];
-    $id = $_SESSION["loginid"];
-
-    $timestamp = date('Y-m-d H:i:s');
-    if(isset($_POST['checkin'])){
-       
- 
-    $query = mysqli_query($conn," UPDATE users SET checkedIn = 1 WHERE id = $id");
-   $query = mysqli_query($conn," UPDATE users SET TimeIn = $timestamp WHERE id = $id");
-
-}
-
-if(isset($_POST['checkout'])){
-        
-    $query = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =$id ");
-       $query = mysqli_query($conn," UPDATE users SET TimeOut = $timestamp WHERE id = $id");
-}
-
 ?>
 
 <div class="container">

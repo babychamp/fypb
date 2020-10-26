@@ -23,9 +23,38 @@
 		}
 		return $conn;
 		}
-	$conn = connect();    
-    ?>
+	$conn = connect(); 
+    
+    
+    
+ //   $_SESSION["type"] = 0;
+ //   $_SESSION["loginid"] = 0;
+    //problem: if the session variables were to be defined after session start, $type and $id won't retrieve data from login
+    // without defining it gives the error seen on homepage while not logged in
 
+    session_start();
+
+   
+
+    $type = $_SESSION["type"];
+    $id = $_SESSION["loginid"];
+
+    $timestamp = date('Y-m-d H:i:s');
+    if(isset($_POST['checkin'])){
+       
+ 
+    $query = mysqli_query($conn," UPDATE users SET checkedIn = 1 WHERE id = $id");
+   $query = mysqli_query($conn," UPDATE users SET TimeIn = $timestamp WHERE id = $id");
+
+}
+
+if(isset($_POST['checkout'])){
+        
+    $query = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =$id ");
+       $query = mysqli_query($conn," UPDATE users SET TimeOut = $timestamp WHERE id = $id");
+}
+
+?>
 
 
 
@@ -43,7 +72,7 @@
                 echo'
 		          <div class="loginbox">';
 	              if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-		              echo $_SESSION["username"].'<a href="logout.php" class="loginbutton">&nbsp; &nbsp; &nbsp; | &nbsp; logout</a>';
+		              echo $_SESSION["username"].'&nbsp; | &nbsp;  <a href="logout.php" class="loginbutton">  logout</a>';
 ?>
                 <div>
                     <form method="post" action="">
