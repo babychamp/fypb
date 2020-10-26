@@ -1,6 +1,4 @@
 <?php
-  // start session
-  session_start();
   require "Include/header.php";
  ?>
 
