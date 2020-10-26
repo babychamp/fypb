@@ -71,7 +71,7 @@ echo'
 
                 </div>
                 <div id="website-logo">
-                    <img src="img/jps.png" alt="logo" id="logo">
+                    <img src="img/jps.png" alt="logo" id="logo" src="homepage.php">
                 </div>';
 
 
