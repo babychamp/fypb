@@ -1,2 +1,0 @@
-# fyp
-Asset Viewing Software
