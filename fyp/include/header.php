@@ -6,7 +6,55 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+
 </head>
+
+<script>
+    $(document).ready(function() {
+        var getColour;
+        if (localStorage.getItem('checkinbg') !== null) {
+            getColour = localStorage.checkinbg;
+            $('.checkin').css('background', getColour);
+        }
+
+        $('.checkin').on('click', function() {
+
+            getColour = 'green';
+            $('.checkin').css('background', 'green');
+            localStorage.setItem('checkinbg', 'green');
+
+            getColour2 = '';
+            $('.checkout').css('background', '');
+            localStorage.setItem('checkoutbg', '');
+
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function() {
+        var getColour2;
+        if (localStorage.getItem('checkoutbg') !== null) {
+            getColour2 = localStorage.checkoutbg;
+            $('.checkout').css('background', getColour2);
+        }
+
+        $('.checkout').on('click', function() {
+
+            getColour2 = 'red';
+            $('.checkout').css('background', 'red');
+            localStorage.setItem('checkoutbg', 'red');
+
+            getColour = '';
+            $('.checkin').css('background', '');
+            localStorage.setItem('checkinbg', '');
+
+        });
+    });
+
+</script>
+
 <?php
     	Function connect(){
 		$servername = "localhost";
@@ -39,7 +87,6 @@ if(isset ($_SESSION["type"])){
     $type = $_SESSION["type"];
     $id = $_SESSION["loginid"];
 
-    $timestamp = date('Y-m-d H:i:s');
     if(isset($_POST['checkin'])){
        
  
@@ -47,12 +94,15 @@ if(isset ($_SESSION["type"])){
    $query = mysqli_query($conn," UPDATE users SET TimeIn = NOW() WHERE id = $id");
         $query = mysqli_query($conn," UPDATE users SET TimeOut = NULL WHERE id = $id");
 
+        
+
 }
 
 if(isset($_POST['checkout'])){
         
     $query = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =$id ");
        $query = mysqli_query($conn," UPDATE users SET TimeOut = NOW() WHERE id = $id");
+    
 }
 }
 ?>
@@ -80,9 +130,9 @@ if(isset($_POST['checkout'])){
                     <form method="post" action="">
                         <?php
 if ($type ==2){
-    echo'
-        <button type="submit" name="checkin" id="checkin" class="btn-success">Check in</button>
-        <button type="submit" name="checkout" id="checkout" class="btn-danger">Check out</button>';
+echo'
+        <button type="submit" name="checkin" id="checkin" class="checkin"  onclick = "checkInButton(1)">Check in</button>
+        <button type="submit" class = "checkout" name="checkout" id="checkout" onclick = "checkOutButton(0)">Check out</button>';
                       
 }
                       ?>
@@ -114,3 +164,26 @@ if ($type ==2){
 </header>
 
 </html>
+
+<!--<script>
+   $(document).ready(function() {
+        var getColour;
+        if (localStorage.getItem('background') !== null) {
+            getColour = localStorage.background;
+            $('.checkin').css('background-color', getColour);
+        }
+
+        $('.checkin').on('click', function() {
+            if (getColour == 'blue') {
+                getColour = 'red';
+                $('.checkin').css('background-color', 'red');
+                localStorage.setItem('background', 'red');
+            } else {
+                getColour = 'blue';
+                $('.checkin').css('background-color', 'blue');
+                localStorage.setItem('background', 'blue');
+            }
+        });
+    });
+
+</script> -->
