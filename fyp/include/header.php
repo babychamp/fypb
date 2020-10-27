@@ -33,7 +33,7 @@
     // without defining it gives the error seen on homepage while not logged in
 
     session_start();
-
+if(isset ($_SESSION["type"])){
    
 
     $type = $_SESSION["type"];
@@ -53,24 +53,25 @@ if(isset($_POST['checkout'])){
     $query = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =$id ");
        $query = mysqli_query($conn," UPDATE users SET TimeOut = $timestamp WHERE id = $id");
 }
-
+}
 ?>
 
 
 
-<body>
-
-    <header>
-        <div id="header-content">
 
 
-            <div id="topheadnav">
-                <?php
-                /*if(isset($_SESSION["loginstatus"]) && $_SESSION["loginstatus"] === "Admin"){
+<header>
+    <div id="header-content">
+
+
+        <div id="topheadnav">
+
+            <!--if(isset($_SESSION["loginstatus"]) && $_SESSION["loginstatus"] === "Admin"){
 		          echo 'Welcome';
-                }*/
-                echo'
-		          <div class="loginbox">';
+                }-->
+
+            <div class="loginbox">
+                <?php
 	              if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 		              echo $_SESSION["username"].'&nbsp; | &nbsp;  <a href="logout.php" class="loginbutton">  logout</a>';
 ?>
@@ -83,27 +84,32 @@ if ($type ==2){
         <button type="submit" name="checkout" id="checkout" class="btn-danger">Check out</button>';
                       
 }
-echo'
-    </form>
+                      ?>
 
+                    </form>
 
-</div>';
-             
-	              }else{
-                      echo'<a href ="register.php" class = "loginbutton">Register</a> &nbsp; &nbsp;';
-		              echo'<a href="login.php" class="loginbutton">Login</a>';
-		              //$website="login.php";
-                      	}
-                
-
-?>
 
                 </div>
-                <div id="website-logo">
-                    <img src="img/jps.png" alt="logo" id="logo" src="homepage.php">
-                </div>';
+                <?php
+                    }else
+                    {
+                    echo'<a href="register.php" class="loginbutton">Register</a> &nbsp; &nbsp;';
+                    echo'<a href="login.php" class="loginbutton">Login</a>';
+                    //$website="login.php";
+                    }
 
+
+                    ?>
 
             </div>
+            <div id="website-logo">
+                <img src="img/jps.png" alt="logo" id="logo" src="homepage.php">
+            </div>
 
-    </header>
+
+        </div>
+    </div>
+
+</header>
+
+</html>

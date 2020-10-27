@@ -66,12 +66,12 @@ if (isset($_POST['register-submit'])){
         <div class="form-group">
             <label>Id </label>
             <label class="required">*</label>
-            <input type="int" class="logininput" name="id" placeholder="id" required />
+            <input type="number" class="logininput" name="id" placeholder="id" required />
         </div>
         <div class="form-group">
             <label>Type</label>
             <label class="required">*</label>
-            <input type="int" class="logininput" name="type" placeholder="type" required />
+            <input type="number" class="logininput" name="type" placeholder="type" required />
         </div>
         <div class="form-group">
             <label>Username </label>
@@ -82,17 +82,18 @@ if (isset($_POST['register-submit'])){
             <label>Email </label>
             <label class="required">*</label>
             <input type="email" class="logininput" name="email" placeholder="email" required />
-            <div class="form-group">
-                <label>Password </label>
-                <label class="required">*</label>
-                <input type="password" class="logininput" name="password" placeholder="password" required />
-            </div>
-            <div class="form-group">
-                <label>Retype Password </label>
-                <label class="required">*</label>
-                <input type="password" class="logininput" name="pwd-repeat" placeholder="Retype Password" required />
-            </div>
-            <button type="submit" name="register-submit">Register</button>
-            <button type="reset" name="register-reset-btn">Reset</button>
+        </div>
+        <div class="form-group">
+            <label>Password </label>
+            <label class="required">*</label>
+            <input type="password" class="logininput" name="password" placeholder="password" required />
+        </div>
+        <div class="form-group">
+            <label>Retype Password </label>
+            <label class="required">*</label>
+            <input type="password" class="logininput" name="pwd-repeat" placeholder="Retype Password" required />
+        </div>
+        <button type="submit" name="register-submit">Register</button>
+        <button type="reset" name="register-reset-btn">Reset</button>
     </form>
 </div>
