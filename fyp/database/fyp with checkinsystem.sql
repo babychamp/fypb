@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2020 at 03:57 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Generation Time: Oct 27, 2020 at 11:33 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -65,6 +65,19 @@ INSERT INTO `assets` (`ID`, `name`, `type`, `description`, `latitude`, `longitud
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `check_system`
+--
+
+CREATE TABLE `check_system` (
+  `id` int(11) NOT NULL,
+  `checkin_out` int(11) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `check_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -74,18 +87,16 @@ CREATE TABLE `users` (
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `checkedin` tinyint(1) NOT NULL,
-  `TimeIn` timestamp(6) NULL DEFAULT NULL,
-  `TimeOut` datetime(6) DEFAULT NULL
+  `checkedin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `type`, `username`, `password`, `email`, `checkedin`, `TimeIn`, `TimeOut`) VALUES
-(1, 1, 'admin', 'admin', 'jtang0308@gmail.com', 0, NULL, NULL),
-(2, 2, 'employee', 'employee', 'employee@gmail.com', 0, '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000');
+INSERT INTO `users` (`id`, `type`, `username`, `password`, `email`, `checkedin`) VALUES
+(1, 1, 'admin', 'admin', 'jtang0308@gmail.com', 0),
+(2, 2, 'employee', 'employee', 'employee@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -94,7 +105,7 @@ INSERT INTO `users` (`id`, `type`, `username`, `password`, `email`, `checkedin`,
 --
 
 CREATE TABLE `user_status` (
-  `id` int(10) NOT NULL DEFAULT 0,
+  `id` int(10) NOT NULL DEFAULT '0',
   `status` varchar(10) NOT NULL DEFAULT 'Deactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -116,6 +127,12 @@ ALTER TABLE `assets`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `check_system`
+--
+ALTER TABLE `check_system`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -130,6 +147,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `assets`
   MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `check_system`
+--
+ALTER TABLE `check_system`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
