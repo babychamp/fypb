@@ -164,26 +164,3 @@ echo'
 </header>
 
 </html>
-
-<!--<script>
-   $(document).ready(function() {
-        var getColour;
-        if (localStorage.getItem('background') !== null) {
-            getColour = localStorage.background;
-            $('.checkin').css('background-color', getColour);
-        }
-
-        $('.checkin').on('click', function() {
-            if (getColour == 'blue') {
-                getColour = 'red';
-                $('.checkin').css('background-color', 'red');
-                localStorage.setItem('background', 'red');
-            } else {
-                getColour = 'blue';
-                $('.checkin').css('background-color', 'blue');
-                localStorage.setItem('background', 'blue');
-            }
-        });
-    });
-
-</script> -->
