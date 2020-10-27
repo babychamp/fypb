@@ -44,14 +44,15 @@ if(isset ($_SESSION["type"])){
        
  
     $query = mysqli_query($conn," UPDATE users SET checkedIn = 1 WHERE id = $id");
-   $query = mysqli_query($conn," UPDATE users SET TimeIn = $timestamp WHERE id = $id");
+   $query = mysqli_query($conn," UPDATE users SET TimeIn = NOW() WHERE id = $id");
+        $query = mysqli_query($conn," UPDATE users SET TimeOut = NULL WHERE id = $id");
 
 }
 
 if(isset($_POST['checkout'])){
         
     $query = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =$id ");
-       $query = mysqli_query($conn," UPDATE users SET TimeOut = $timestamp WHERE id = $id");
+       $query = mysqli_query($conn," UPDATE users SET TimeOut = NOW() WHERE id = $id");
 }
 }
 ?>
