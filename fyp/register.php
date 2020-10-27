@@ -1,10 +1,60 @@
-<?php
-  // start session
-  session_start();
-  require "Include/header.php";
- ?>
+<!DOCTYPE html>
 
-<?php
+<!-- data-ng-app="pigeon-table" in the html is essential to inject ngPigeon-table into the webpage-->
+<html lang="en" data-ng-app="pigeon-table">
+
+<head>
+    <title>Assets</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- The includes.php file is required to include all necessary dependencies-->
+    <?php
+        include "pigeon-table/php/includes.php";
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbName = "fyp";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbName);        
+    ?>
+
+</head>
+
+<body> <?php
+
+    echo'<header>';
+       echo' <div id ="header-content">';
+           
+                    echo '
+<div id="topheadnav">';
+    session_start();
+
+/*if(isset($_SESSION["loginstatus"]) && $_SESSION["loginstatus"] === "Admin"){
+
+        echo 'Welcome';
+    }*/
+    echo'
+        <div class="loginbox">';
+    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+        echo $_SESSION["username"].'<a href="logout.php" class="loginbutton"> | logout</a>';
+        
+    }else{
+        echo'<a href="login.php" class="loginbutton">Login</a>';
+        $website="login.php";
+    }
+    echo'
+    </div>
+    </div>
+        <div id="website-logo">
+            <img src="img/jps.png" alt="logo" id="logo" onclick="location.href=\'homepage.php\'">
+        </div>';
+
+
+            
+   echo' </header>';
+
 if (isset($_POST['register-submit'])){
 	
 	$id = $_POST['id'];
@@ -61,40 +111,23 @@ if (isset($_POST['register-submit'])){
 }
 ?>
 
-<!-- HTML CODE -->
-<div class="register-input-field">
-    <h1>Register</h1>
-    <form id="loginform" method="POST">
-        <div class="form-group">
-            <label>Id </label>
-            <label class="required">*</label>
-            <input type="int" class="logininput" name="id" placeholder="id" required />
-        </div>
-        <div class="form-group">
-            <label>Type</label>
-            <label class="required">*</label>
-            <input type="int" class="logininput" name="type" placeholder="type" required />
-        </div>
-        <div class="form-group">
-            <label>Username </label>
-            <label class="required">*</label>
-            <input type="text" class="logininput" name="username" placeholder="username" required />
-        </div>
-        <div class="form-group">
-            <label>Email </label>
-            <label class="required">*</label>
-            <input type="email" class="logininput" name="email" placeholder="email" required />
-            <div class="form-group">
-                <label>Password </label>
-                <label class="required">*</label>
-                <input type="password" class="logininput" name="password" placeholder="password" required />
-            </div>
-            <div class="form-group">
-                <label>Retype Password </label>
-                <label class="required">*</label>
-                <input type="password" class="logininput" name="pwd-repeat" placeholder="Retype Password" required />
-            </div>
-            <button type="submit" name="register-submit">Register</button>
-            <button type="reset" name="register-reset-btn">Reset</button>
-    </form>
-</div>
+<div class="col-md-12">';
+               <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+        
+            echo' <h1>Assets</h1>
+          <div class ="container"> 
+            <div class="row">';
+           echo' <pigeon-table query="SELECT * FROM users" control="true" editable="true">';
+            echo'</pigeon-table>';
+            echo'</div>  ';     
+        echo' </div>';
+    echo'</div>';
+        
+    }else{
+        echo'<p> Sorry, you need administrator privileges to view this page</p>';    
+    }
+          
+?>
+</body>
+
+</html>
