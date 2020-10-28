@@ -55,9 +55,9 @@
             
    echo' </header>';
 
-
+if(isset($_SESSION["loginid"])){
 $id = $_SESSION["loginid"];
-           
+}
            echo' <div class="col-md-12">';
                if(isset($_SESSION["loggedin"]) == true && $id == '1'){
         
