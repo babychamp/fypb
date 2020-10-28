@@ -38,6 +38,8 @@ if(isset ($_SESSION["type"])){
    $description = 'take input from textarea';
 
     $timestamp = date('Y-m-d H:i:s');
+    
+    
     if(isset($_POST['checkin'])){
        
  
@@ -77,7 +79,7 @@ echo'
         <div id="topheadnav">
         ';
     //checking values passing
-    echo $reason, $description, $id, $username;
+   // echo $reason, $description, $id, $username;
             
 ?>
 
@@ -91,8 +93,8 @@ echo'
             <?php
 if ($type ==2){
     echo'
-        <button type="submit" name="checkin" id="checkin" class="btn-success">Check in</button>
-        <button type="submit" name="checkout" id="checkout" class="btn-danger">Check out</button>';
+        <button type="submit" name="checkin" id="checkin">Check in</button>
+        <button type="submit" name="checkout" id="checkout">Check out</button>';
                       
 }
                       ?>
