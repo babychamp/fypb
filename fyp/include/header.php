@@ -25,12 +25,7 @@
 		}
 	$conn = connect(); 
     
-    
-    
- //   $_SESSION["type"] = 0;
- //   $_SESSION["loginid"] = 0;
-    //problem: if the session variables were to be defined after session start, $type and $id won't retrieve data from login
-    // without defining it gives the error seen on homepage while not logged in
+
 
     session_start();
 if(isset ($_SESSION["type"])){
@@ -57,19 +52,12 @@ if(isset($_POST['checkout'])){
 }
 ?>
 
-
-
-
-
 <header>
     <div id="header-content">
 
 
         <div id="topheadnav">
 
-            <!--if(isset($_SESSION["loginstatus"]) && $_SESSION["loginstatus"] === "Admin"){
-		          echo 'Welcome';
-                }-->
 
             <div class="loginbox">
                 <?php

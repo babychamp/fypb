@@ -19,11 +19,6 @@
         <div class="row">
             <h1>Asset Viewing Software</h1>
 
-
-
-
-
-
         </div>
     </div>
 
