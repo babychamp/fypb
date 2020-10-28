@@ -50,7 +50,7 @@ function test_input($username,$password) {
     
 		$_SESSION["loggedin"] = true;
 		$_SESSION["username"] = $_POST["username"];
-		$_SESSION["loginid"] = $_POST["id"];
+		$_SESSION["loginid"] = $id;
         $_SESSION["type"] = $type;
 		//$_SESSION["loginstatus"] = $status;
 		if($type == "1" || $type == "2" || $type == "3"){

@@ -56,39 +56,32 @@
    echo' </header>';
 
 
-?>
 
-    <div class="col-md-12">
-
-        <?php
+           
+           echo' <div class="col-md-12">';
+               if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         
-    
-        
-        if(($_SESSION["loggedin"]) == true && $_SESSION["type"] == '1'){
-
-        echo' <h1>Assets</h1>
-        <div class="container">
+            echo' <h1>Assets</h1>
+          <div class ="container"> 
             <div class="row">';
-                echo' <pigeon-table query="SELECT name, type, description, latitude, longitude, area FROM assets" control="true" editable="true">';
-                    echo'</pigeon-table>';
-                echo'</div> ';
-            echo'
-        </div>';
-        echo'
-    </div>';
-
+           echo' <pigeon-table query="SELECT name, type, description, latitude, longitude, area FROM assets" control="true" editable="true">';
+            echo'</pigeon-table>';
+            echo'</div>  ';     
+        echo' </div>';
+    echo'</div>';
+        
     }else{
-    echo'<a href="login.php" class="loginbutton">Login</a>';
-    $website="login.php";
-    echo' <h1>Assets <small>(Login required for administrator privileges)</small></h1>
-    <div class="container">
-        <div class="row">';
-            echo' <pigeon-table query="SELECT name, type, description, latitude, longitude, area FROM assets" control="true" editable="false">';
-                //Setting editable to true allows you to change the database, false gives no access. Control is for being the search field.
-                echo'</pigeon-table>';
-            }
-
-            ?>
+        echo'<a href="login.php" class="loginbutton">Login</a>';
+        $website="login.php";
+        echo' <h1>Assets <small>(Login required for administrator privileges)</small></h1>
+          <div class ="container"> 
+            <div class="row">';
+        echo' <pigeon-table query="SELECT name, type, description, latitude, longitude, area FROM assets" control="true" editable="false">';
+        //Setting editable to true allows you to change the database, false gives no access. Control is for being the search field.
+        echo'</pigeon-table>';    
+    }
+          
+?>
 </body>
 
 </html>
