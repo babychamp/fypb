@@ -33,6 +33,9 @@ if(isset ($_SESSION["type"])){
 
     $type = $_SESSION["type"];
     $id = $_SESSION["loginid"];
+    $username = $_SESSION["username"];
+    $reason = 'take input from radiobtn';
+   $description = 'take input from textarea';
 
     $timestamp = date('Y-m-d H:i:s');
     if(isset($_POST['checkin'])){
@@ -41,6 +44,7 @@ if(isset ($_SESSION["type"])){
     $query = mysqli_query($conn," UPDATE users SET checkedIn = 1 WHERE id = $id");
    $query = mysqli_query($conn," UPDATE users SET TimeIn = NOW() WHERE id = $id");
         $query = mysqli_query($conn," UPDATE users SET TimeOut = NULL WHERE id = $id");
+        
 
 }
 
@@ -48,25 +52,43 @@ if(isset($_POST['checkout'])){
         
     $query = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =$id ");
        $query = mysqli_query($conn," UPDATE users SET TimeOut = NOW() WHERE id = $id");
-}
-}
-?>
+   /* $sql=($conn, "UPDATE check_system (checkin_out, username, reason, description) VALUES (0, $username, $reason, $description) WHERE id = $id");
+    $stmt= $conn->prepare($sql);
+$stmt->bind_param("sssss", '0', $username, $reason, $description, $id);
+$stmt->execute();*/
 
+
+/*
+ON DUPLICATE KEY UPDATE
+  id     = VALUES($id),
+  checkin_out = VALUES(0),
+    username = $username,
+    check_time = VALUES(NOW()),
+    reason = $reason,
+    description = $description");*/
+}
+}
+
+echo'
 <header>
     <div id="header-content">
 
 
         <div id="topheadnav">
+        ';
+    //checking values passing
+    echo $reason, $description, $id, $username;
+            
+?>
 
-
-            <div class="loginbox">
-                <?php
+<div class="loginbox">
+    <?php
 	              if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 		              echo $_SESSION["username"].'&nbsp; | &nbsp;  <a href="logout.php" class="loginbutton">  logout</a>';
 ?>
-                <div>
-                    <form method="post" action="">
-                        <?php
+    <div>
+        <form method="post" action="">
+            <?php
 if ($type ==2){
     echo'
         <button type="submit" name="checkin" id="checkin" class="btn-success">Check in</button>
@@ -75,11 +97,11 @@ if ($type ==2){
 }
                       ?>
 
-                    </form>
+        </form>
 
 
-                </div>
-                <?php
+    </div>
+    <?php
                     }else
                     {
                     echo'<a href="register.php" class="loginbutton">Register</a> &nbsp; &nbsp;';
@@ -90,14 +112,14 @@ if ($type ==2){
 
                     ?>
 
-            </div>
-            <div id="website-logo">
-                <img src="img/jps.png" alt="logo" id="logo" src="homepage.php">
-            </div>
+</div>
+<div id="website-logo">
+    <img src="img/jps.png" alt="logo" id="logo" src="homepage.php">
+</div>
 
 
-        </div>
-    </div>
+</div>
+</div>
 
 </header>
 
