@@ -56,10 +56,10 @@
    echo' </header>';
 
 
-
+$id = $_SESSION["loginid"];
            
            echo' <div class="col-md-12">';
-               if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+               if(isset($_SESSION["loggedin"]) == true && $id == '1'){
         
             echo' <h1>Assets</h1>
           <div class ="container"> 
