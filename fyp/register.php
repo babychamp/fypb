@@ -56,8 +56,8 @@
             
    echo' </header>';
 
-<div class="col-md-12">';
-               <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+echo' <div class="col-md-12">';
+               if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         
             echo' <h1>Assets</h1>
           <div class ="container"> 
