@@ -23,54 +23,52 @@
 
 </head>
 
-<body> <?php
+<body>
 
-    echo'<header>';
-       echo' <div id ="header-content">';
-           
-                    echo '
-<div id="topheadnav">';
+
+    <header>
+        <div id="header-content">
+
+
+            <div id="topheadnav">
+
+
+                <div class="loginbox">
+                    <?php
     session_start();
-
-/*if(isset($_SESSION["loginstatus"]) && $_SESSION["loginstatus"] === "Admin"){
-
-        echo 'Welcome';
-    }*/
-    echo'
-        <div class="loginbox">';
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         echo $_SESSION["username"].'<a href="logout.php" class="loginbutton"> | logout</a>';
         
     }else{
         echo'<a href="login.php" class="loginbutton">Login</a>';
-        $website="login.php";
     }
-    echo'
-    </div>
-    </div>
-        <div id="website-logo">
-            <img src="img/jps.png" alt="logo" id="logo" onclick="location.href=\'homepage.php\'">
-        </div>';
+  ?>
+                </div>
+            </div>
+            <div id="website-logo">
+                <img src="img/jps.png" alt="logo" id="logo" onclick="location.href=\'homepage.php\'">
+            </div>
 
 
-            
-   echo' </header>';
 
-echo' <div class="col-md-12">';
+    </header>
+
+    <div class="col-md-12">
+        <?php
                if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         
             echo' <h1>Assets</h1>
           <div class ="container"> 
-            <div class="row">';
-           echo' <pigeon-table query="SELECT * FROM users" control="true" editable="true">';
-            echo'</pigeon-table>';
-            echo'</div>  ';     
-        echo' </div>';
-    echo'</div>';
+            <div class="row">
+           <pigeon-table query="SELECT * FROM users" control="true" editable="true">
+            </pigeon-table>
+            </div>     
+        </div>
+    </div>';
         
     }else{
         echo'<p> Sorry, you need administrator privileges to view this page</p>';    
     }
-          
+        
 ?>
 </body>
