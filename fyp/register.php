@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+
 <!-- data-ng-app="pigeon-table" in the html is essential to inject ngPigeon-table into the webpage-->
 <html lang="en" data-ng-app="pigeon-table">
 
@@ -73,5 +74,3 @@
           
 ?>
 </body>
-
-</html>

@@ -52,7 +52,6 @@ function test_input($username,$password) {
 		$_SESSION["username"] = $_POST["username"];
 		$_SESSION["loginid"] = $id;
         $_SESSION["type"] = $type;
-		//$_SESSION["loginstatus"] = $status;
 		if($type == "1" || $type == "2" || $type == "3"){
 			header("refresh: 0; url=homepage.php");
 		}else{

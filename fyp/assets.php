@@ -22,19 +22,16 @@
 
 </head>
 
-<body> <?php
+<body>
 
-    echo'<header>';
-       echo' <div id ="header-content">';
-           
-                    echo '
-<div id="topheadnav">';
+    <header>
+        <div id="header-content">
+
+
+            <div id="topheadnav">
+                <?php
     session_start();
 
-/*if(isset($_SESSION["loginstatus"]) && $_SESSION["loginstatus"] === "Admin"){
-
-        echo 'Welcome';
-    }*/
     echo'
         <div class="loginbox">';
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -44,44 +41,46 @@
         echo'<a href="login.php" class="loginbutton">Login</a>';
         $website="login.php";
     }
-    echo'
-    </div>
-    </div>
+                ?>
+
+            </div>
+        </div>
         <div id="website-logo">
             <img src="img/jps.png" alt="logo" id="logo" onclick="location.href=\'homepage.php\'">
-        </div>';
+        </div>
 
+    </header>
 
-            
-   echo' </header>';
-
-
-
-           
-           echo' <div class="col-md-12">';
-               if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        
-            echo' <h1>Assets</h1>
-          <div class ="container"> 
-            <div class="row">';
-           echo' <pigeon-table query="SELECT name, type, description, latitude, longitude, area FROM assets" control="true" editable="true">';
-            echo'</pigeon-table>';
-            echo'</div>  ';     
-        echo' </div>';
-    echo'</div>';
-        
-    }else{
-        echo'<a href="login.php" class="loginbutton">Login</a>';
-        $website="login.php";
-        echo' <h1>Assets <small>(Login required for administrator privileges)</small></h1>
-          <div class ="container"> 
-            <div class="row">';
-        echo' <pigeon-table query="SELECT name, type, description, latitude, longitude, area FROM assets" control="true" editable="false">';
-        //Setting editable to true allows you to change the database, false gives no access. Control is for being the search field.
-        echo'</pigeon-table>';    
+    <?php
+    if(isset($_SESSION["loginid"])){
+    $id = $_SESSION["loginid"];
     }
-          
-?>
+    echo' <div class="col-md-12">';
+        if(isset($_SESSION["loggedin"]) == true && $id == '1'){
+
+        echo' <h1>Assets</h1>
+        <div class="container">
+            <div class="row">
+                <pigeon-table query="SELECT name, type, description, latitude, longitude, area FROM assets" control="true" editable="true">
+                    </pigeon-table>
+                </div> 
+            
+        </div>
+        
+    </div>';
+
+    }else{
+    echo'<a href="login.php" class="loginbutton">Login</a>';
+    $website="login.php";
+    echo' <h1>Assets <small>(Login required for administrator privileges)</small></h1>
+    <div class="container">
+        <div class="row">
+            <pigeon-table query="SELECT name, type, description, latitude, longitude, area FROM assets" control="true" editable="false">
+                //Setting editable to true allows you to change the database, false gives no access. Control is for being the search field.
+                </pigeon-table>';
+            }
+
+            ?>
 </body>
 
 </html>
