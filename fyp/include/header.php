@@ -46,6 +46,7 @@ if(isset ($_SESSION["type"])){
     $query = mysqli_query($conn," UPDATE users SET checkedIn = 1 WHERE id = $id");
    $query = mysqli_query($conn," UPDATE users SET TimeIn = NOW() WHERE id = $id");
         $query = mysqli_query($conn," UPDATE users SET TimeOut = NULL WHERE id = $id");
+         $sql=mysqli_query($conn, "INSERT INTO check_system(id, checkin_out, username) VALUES ($id, 1, '".$username."')");
         
 
 }
@@ -54,20 +55,8 @@ if(isset($_POST['checkout'])){
         
     $query = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =$id ");
        $query = mysqli_query($conn," UPDATE users SET TimeOut = NOW() WHERE id = $id");
-   /* $sql=($conn, "UPDATE check_system (checkin_out, username, reason, description) VALUES (0, $username, $reason, $description) WHERE id = $id");
-    $stmt= $conn->prepare($sql);
-$stmt->bind_param("sssss", '0', $username, $reason, $description, $id);
-$stmt->execute();*/
+    $sql=mysqli_query($conn, "INSERT INTO check_system(id, checkin_out, username, reason, description) VALUES ($id, 0, '".$username."', '".$reason."', '".$description."')");
 
-
-/*
-ON DUPLICATE KEY UPDATE
-  id     = VALUES($id),
-  checkin_out = VALUES(0),
-    username = $username,
-    check_time = VALUES(NOW()),
-    reason = $reason,
-    description = $description");*/
 }
 }
 
@@ -78,8 +67,6 @@ echo'
 
         <div id="topheadnav">
         ';
-    //checking values passing
-   // echo $reason, $description, $id, $username;
             
 ?>
 
