@@ -8,6 +8,13 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="style2.css">
 </head>
+<!--to prevent form resubmission on page refresh-->
+<script>
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+
+</script>
 <?php
     	Function connect(){
 		$servername = "localhost";
@@ -35,11 +42,20 @@ if(isset ($_SESSION["type"])){
     $type = $_SESSION["type"];
     $id = $_SESSION["loginid"];
     $username = $_SESSION["username"];
-    $reason = 'take input from radiobtn';
-   $description = 'take input from textarea';
-
-    $timestamp = date('Y-m-d H:i:s');
+             if(isset($_POST['description'])){
+	$description= $_POST ['description'];
+}
     
+            
+   if(isset($_POST['end'])){
+	$reason= $_POST ['end'];
+} 
+              if(isset($_POST['sick'])){
+	$reason= $_POST ['sick'];
+} 
+      if(isset($_POST['other'])){
+	$reason= $_POST ['other'];
+} 
     
     if(isset($_POST['checkin'])){
        
@@ -47,7 +63,7 @@ if(isset ($_SESSION["type"])){
     $query = mysqli_query($conn," UPDATE users SET checkedIn = 1 WHERE id = $id");
    $query = mysqli_query($conn," UPDATE users SET TimeIn = NOW() WHERE id = $id");
         $query = mysqli_query($conn," UPDATE users SET TimeOut = NULL WHERE id = $id");
-         $sql=mysqli_query($conn, "INSERT INTO check_system(id, checkin_out, username) VALUES ($id, 1, '".$username."')");
+         $sql=mysqli_query($conn, "INSERT INTO check_system(checkin_out, username) VALUES (1, '".$username."')");
         
 
 }
@@ -56,9 +72,10 @@ if(isset($_POST['checkout'])){
         
     $query = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =$id ");
        $query = mysqli_query($conn," UPDATE users SET TimeOut = NOW() WHERE id = $id");
-    $sql=mysqli_query($conn, "INSERT INTO check_system(id, checkin_out, username, reason, description) VALUES ($id, 0, '".$username."', '".$reason."', '".$description."')");
+    $sql=mysqli_query($conn, "INSERT INTO check_system(checkin_out, username, reason, description) VALUES (0, '".$username."', '".$reason."', '".$description."')");
 
 }
+   
 }
 
 echo'
@@ -82,15 +99,17 @@ echo'
 if ($type ==2){
     echo'
         <button type="submit" name="checkin" id="checkin">Check in</button>
-        </br></br>
+        </br>
     Reason for checkout:</br>
-    <input type="radio" id="end" name="end" value="End of day" checked = "checked">
-<label for="reason">End of day</label>';
-echo'<input type="radio" id="sick" name="sick" value="Sick">
-<label for="sick">Sick</label><br><br>
-<label for="description">If other reason, describe:</label></br>
+    <input type="radio" id="end" name="end" value="End of day">
+<label for="reason">End of day</label>
+<input type="radio" id="sick" name="sick" value="Sick">
+<label for="sick">Sick</label><br>
+<input type="radio" id="other" name="other" value="other">
+<label for="other">Other</label><br>
+<label for="description">If other reason, describe:</label><br>
 
-<textarea id="description" name="description" rows="2" cols="40"></textarea></br>
+<textarea id="description" name="description" rows="3" cols="40"></textarea></br>
 <button type="submit" name="checkout" id="checkout">Check out</button>
 
 ';
