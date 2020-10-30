@@ -5,6 +5,9 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- The includes.php file is required to include all necessary dependencies-->
     <?php
         $servername = "localhost";
@@ -57,7 +60,9 @@
             $sql = "SELECT username FROM users WHERE checkedin = 1";
                 $result = $conn->query($sql);
 
-            echo'<table>
+            echo'<div class="container">
+            <div class="table-responsive">
+            	<table class="table">
                     <tr>
                         <th>Name</th>
                     </tr>';
@@ -67,7 +72,9 @@
                 while($row = $result->fetch_assoc()) {
                 echo "<tr><td>". $row["username"]. "</td></tr>";
             }
-            echo'</table>';
+            echo'</table>
+            </div>
+            </div>';
             } else {
             echo "0 results";
             }
