@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2020 at 12:31 PM
+-- Generation Time: Nov 06, 2020 at 12:37 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -108,7 +108,7 @@ CREATE TABLE `users` (
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `checkedin` tinyint(1) NOT NULL,
+  `checkedin` tinyint(1) NOT NULL DEFAULT '0',
   `grade` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
