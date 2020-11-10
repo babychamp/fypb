@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2020 at 12:31 PM
+-- Generation Time: Oct 27, 2020 at 11:33 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -75,27 +75,6 @@ CREATE TABLE `check_system` (
   `check_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `check_system`
---
-
-INSERT INTO `check_system` (`id`, `checkin_out`, `username`, `check_time`) VALUES
-(2, 1, 'employee', '2020-11-02 09:24:41'),
-(3, 1, 'employee', '2020-11-02 09:25:54'),
-(4, 1, 'employee', '2020-11-02 09:25:58'),
-(5, 1, 'employee', '2020-11-02 09:27:46'),
-(6, 1, 'employee', '2020-11-02 09:28:22'),
-(7, 1, 'employee', '2020-11-02 09:28:42'),
-(8, 1, 'employee', '2020-11-02 09:28:51'),
-(9, 1, 'employee', '2020-11-02 09:28:58'),
-(10, 1, 'employee', '2020-11-02 09:29:03'),
-(11, 1, 'employee', '2020-11-02 09:29:27'),
-(12, 1, 'employee', '2020-11-02 09:29:37'),
-(13, 1, 'employee', '2020-11-02 09:29:48'),
-(14, 1, 'employee', '2020-11-02 09:30:10'),
-(15, 1, 'employee', '2020-11-02 09:31:03'),
-(16, 1, 'employee', '2020-11-02 09:32:11');
-
 -- --------------------------------------------------------
 
 --
@@ -108,17 +87,16 @@ CREATE TABLE `users` (
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `checkedin` tinyint(1) NOT NULL,
-  `grade` varchar(64) NOT NULL
+  `checkedin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `type`, `username`, `password`, `email`, `checkedin`, `grade`) VALUES
-(1, 1, 'admin', 'admin', 'jtang0308@gmail.com', 0, ''),
-(2, 2, 'employee', 'employee', 'employee@gmail.com', 1, 'AB');
+INSERT INTO `users` (`id`, `type`, `username`, `password`, `email`, `checkedin`) VALUES
+(1, 1, 'admin', 'admin', 'jtang0308@gmail.com', 0),
+(2, 2, 'employee', 'employee', 'employee@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -174,7 +152,7 @@ ALTER TABLE `assets`
 -- AUTO_INCREMENT for table `check_system`
 --
 ALTER TABLE `check_system`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

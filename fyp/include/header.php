@@ -147,9 +147,9 @@ if ($type ==2){
 <!--
 <div class="navbar">
     <a class="active" href="homepage.php">Home</a>
-    <a href="Assets.php">Assets</a>
-    <a href="Attendance.php">Contact</a>
-    <a href="About.php">About</a>
+    <a href="assets.php">Assets</a>
+    <a href="attendance.php">Attendance</a>
+    <a href="register.php">Register</a>
 </div>
 -->
 
