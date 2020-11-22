@@ -24,35 +24,39 @@
 <body> <?php
 
     echo'<header>';
-       echo' <div id ="header-content">';
-           
-                    echo '
-<div id="topheadnav">';
-    session_start();
+        echo' <div id="header-content">';
 
-/*if(isset($_SESSION["loginstatus"]) && $_SESSION["loginstatus"] === "Admin"){
+            echo '
+            <div id="topheadnav">';
+                session_start();
 
-        echo 'Welcome';
-    }*/
-    echo'
-        <div class="loginbox">';
-    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        echo $_SESSION["username"].'<a href="logout.php" class="loginbutton"> | logout</a>';
-        
-    }else{
-        echo'<a href="login.php" class="loginbutton">Login</a>';
-        $website="login.php";
-    }
-    echo'
-    </div>
-    </div>
-        <div id="website-logo">
-            <img src="img/jps.png" alt="logo" id="logo" onclick="location.href=\'homepage.php\'">
+                /*if(isset($_SESSION["loginstatus"]) && $_SESSION["loginstatus"] === "Admin"){
+
+                echo 'Welcome';
+                }*/
+                echo'
+                <div class="loginbox">';
+                    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+                    echo $_SESSION["username"].'<a href="logout.php" class="loginbutton"> | logout</a>';
+
+                    }else{
+                    echo'<a href="login.php" class="loginbutton">Login</a>';
+                    $website="login.php";
+                    }
+                    echo'
+                </div>
+            </div>
+            <div id="website-logo">
+                <img src="img/jps.png" alt="logo" id="logo" onclick="location.href=\'homepage.php\'">
+            </div>
         </div>';
 
 
-            
-   echo' </header>';
+
+        echo' </header>';
+    
+    
+    
 if(isset($_SESSION["loginid"])){
          $id = $_SESSION["loginid"];}
                if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $id =='1'){
@@ -87,8 +91,7 @@ if(isset($_SESSION["loginid"])){
 
            //SQL and display here
     }else{
-        echo'<a href="login.php" class="loginbutton">Login</a>';
-        $website="login.php";
+     
         echo' <h1>Attendance<small>(Login required for administrator privileges)</small></h1>';   
     }
           
