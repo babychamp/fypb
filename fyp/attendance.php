@@ -53,10 +53,15 @@
 
             
    echo' </header>';
-
-               if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+if(isset($_SESSION["loginid"])){
+         $id = $_SESSION["loginid"];}
+               if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $id =='1'){
+                   
+    
         
             echo'<h1>Staff Attendance</h1>';
+                   
+
             $sql = "SELECT username, grade FROM users WHERE checkedin = 1";
                 $result = $conn->query($sql);
 
@@ -79,6 +84,7 @@
             } else {
             echo "0 results";
             }
+
            //SQL and display here
     }else{
         echo'<a href="login.php" class="loginbutton">Login</a>';

@@ -1,7 +1,7 @@
 <?php
 	// start the session()
 	//session_start();
-	require "Include/header2.php";
+	require "Include/header.php";
 
 
     

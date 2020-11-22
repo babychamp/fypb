@@ -55,9 +55,11 @@
 
     <div class="col-md-12">
         <?php
-               if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        
-            echo' <h1>Assets</h1>
+        if(isset($_SESSION["loginid"])){
+         $id = $_SESSION["loginid"];}
+               if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $id =='1'){
+       
+            echo' <h1>Register</h1>
           <div class ="container"> 
             <div class="row">
            <pigeon-table query="SELECT * FROM users" control="true" editable="true">
