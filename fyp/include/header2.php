@@ -47,15 +47,7 @@ if(isset ($_SESSION["type"])){
 }
     
             
-   if(isset($_POST['end'])){
-	$reason= $_POST ['end'];
-} 
-              if(isset($_POST['sick'])){
-	$reason= $_POST ['sick'];
-} 
-      if(isset($_POST['other'])){
-	$reason= $_POST ['other'];
-} 
+   
     
     if(isset($_POST['checkin'])){
        
@@ -69,10 +61,25 @@ if(isset ($_SESSION["type"])){
 }
 
 if(isset($_POST['checkout'])){
+    
+    $reason = $_POST['reason'];
+    
+    if ($reason == 'other' && $description == null){
+        $msg = "Please describe other reason before checking out";
+        function alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
+}
+    }else{
+        
+    }
         
     $query = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =$id ");
        $query = mysqli_query($conn," UPDATE users SET TimeOut = NOW() WHERE id = $id");
+    if(isset($_POST['description'])){
     $sql=mysqli_query($conn, "INSERT INTO check_system(checkin_out, username, reason, description) VALUES (0, '".$username."', '".$reason."', '".$description."')");
+    }else{
+        $sql=mysqli_query($conn, "INSERT INTO check_system(checkin_out, username, reason) VALUES (0, '".$username."', '".$reason."')");
+    }
 
 }
    
@@ -99,8 +106,8 @@ echo'
 if ($type ==2){
     echo'
         <button type="submit" name="checkin" id="checkin">Check in</button>
-        </br>
-    Reason for checkout:</br>';
+    
+    </br>';
     /*
       <input list="reason" name="reason">
   <datalist id="reason">
@@ -109,24 +116,36 @@ if ($type ==2){
     <option value="Other">
   </datalist>
   <input type="submit">
-    */
-echo'
-    
-
+  
     <input type="radio" id="end" name="end" value="End of day">
 <label for="reason">End of day</label>
 <input type="radio" id="sick" name="sick" value="Sick">
 <label for="sick">Sick</label><br>
 <input type="radio" id="other" name="other" value="other">
+  
+    */
+echo'
+    
+
+  
 
 
-<label for="other">Other</label><br> 
+<br>
+  <label for="reason">Reason for checkout:</label>
+  <select id="reason" name="reason">
+    <option value="end">End of the day</option>
+    <option value="sick">Sick</option>
+    <option value="other">Other reason</option>
+  </select>
+  <br>
+
 
 <label for="description">If other reason, describe:</label><br>
 
 <textarea id="description" name="description" rows="3" cols="40"></textarea></br>
-<button type="submit" name="checkout" id="checkout">Check out</button>
 
+<button type="submit" name="checkout" id="checkout">Check out</button>
+</form>
 ';
     
                       
