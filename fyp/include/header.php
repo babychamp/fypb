@@ -61,8 +61,6 @@ if(isset ($_SESSION["type"])){
        
  
     $query = mysqli_query($conn," UPDATE users SET checkedIn = 1 WHERE id = $id");
-   $query = mysqli_query($conn," UPDATE users SET TimeIn = NOW() WHERE id = $id");
-        $query = mysqli_query($conn," UPDATE users SET TimeOut = NULL WHERE id = $id");
          $sql=mysqli_query($conn, "INSERT INTO check_system(checkin_out, username) VALUES (1, '".$username."')");
         
 
@@ -71,7 +69,6 @@ if(isset ($_SESSION["type"])){
 if(isset($_POST['checkout'])){
         
     $query = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =$id ");
-       $query = mysqli_query($conn," UPDATE users SET TimeOut = NOW() WHERE id = $id");
     $sql=mysqli_query($conn, "INSERT INTO check_system(checkin_out, username, reason, description) VALUES (0, '".$username."', '".$reason."', '".$description."')");
 
 }
@@ -165,9 +162,9 @@ echo'
 <!--
 <div class="navbar">
     <a class="active" href="homepage.php">Home</a>
-    <a href="Assets.php">Assets</a>
-    <a href="Attendance.php">Contact</a>
-    <a href="About.php">About</a>
+    <a href="assets.php">Assets</a>
+    <a href="attendance.php">Attendance</a>
+    <a href="register.php">Register</a>
 </div>
 -->
 
