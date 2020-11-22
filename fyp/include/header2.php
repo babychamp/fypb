@@ -64,11 +64,18 @@ if(isset($_POST['checkout'])){
     
     $reason = $_POST['reason'];
     
-
+    if ($reason == 'other' && $description == null){
+        $msg = "Please describe other reason before checking out";
+        function alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
+}
+    }else{
+        
+    }
         
     $query = mysqli_query($conn," UPDATE users SET checkedIn = 0 WHERE id =$id ");
        $query = mysqli_query($conn," UPDATE users SET TimeOut = NOW() WHERE id = $id");
-    if($reason == 'other' && isset($_POST['description'])){
+    if(isset($_POST['description'])){
     $sql=mysqli_query($conn, "INSERT INTO check_system(checkin_out, username, reason, description) VALUES (0, '".$username."', '".$reason."', '".$description."')");
     }else{
         $sql=mysqli_query($conn, "INSERT INTO check_system(checkin_out, username, reason) VALUES (0, '".$username."', '".$reason."')");
@@ -91,9 +98,7 @@ echo'
 <div class="loginbox">
     <?php
 	              if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-		              echo $_SESSION["username"].'&nbsp;
-                      
-                              | &nbsp;  <a href="logout.php" class="loginbutton">  logout</a>';
+		              echo $_SESSION["username"].'&nbsp; | &nbsp;  <a href="logout.php" class="loginbutton">  logout</a>';
 ?>
     <div>
         <form method="post" action="">
@@ -103,7 +108,22 @@ if ($type ==2){
         <button type="submit" name="checkin" id="checkin">Check in</button>
     
     </br>';
-
+    /*
+      <input list="reason" name="reason">
+  <datalist id="reason">
+    <option value="End of day">
+    <option value="Sick">
+    <option value="Other">
+  </datalist>
+  <input type="submit">
+  
+    <input type="radio" id="end" name="end" value="End of day">
+<label for="reason">End of day</label>
+<input type="radio" id="sick" name="sick" value="Sick">
+<label for="sick">Sick</label><br>
+<input type="radio" id="other" name="other" value="other">
+  
+    */
 echo'
     
 
@@ -161,22 +181,11 @@ echo'
 
 </header>
 
-<!--
-<?php
-/*
-        if(isset($_SESSION["loginid"])){
-         $id = $_SESSION["loginid"];
-        }
-               if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $id =='1'){
-
-echo'
 <div class="navbar">
     <a class="active" href="homepage.php">Home</a>
-    <a href="assets.php">Assets</a>
-    <a href="register.php">Register</a>
-    <a href="attendance.php">Attendance</a>
-</div>';
-              } */
-?>
--->
+    <a href="Assets.php">Assets</a>
+    <a href="Attendance.php">Attendance</a>
+    <a href="regiter.php">Register</a>
+</div>
+
 </html>

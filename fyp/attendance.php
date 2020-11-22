@@ -53,7 +53,12 @@
 
 
 
-        echo' </header>';
+        echo' </header>
+            <div class="navbar">
+                <a href="homepage.php">Home</a>
+                <a href="assets.php">Assets</a>
+                <a href="register.php">Register</a>
+            </div>';
     
     
     

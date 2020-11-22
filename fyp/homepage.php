@@ -15,6 +15,13 @@
 <html>
 
 <body>
+
+<div class="navbar">
+    <a href="assets.php">Assets</a>
+    <a href="register.php">Register</a>
+    <a href="attendance.php">Attendance</a>
+</div>
+
     <div class="container">
         <div class="row">
             <h1>Asset Viewing Software</h1>

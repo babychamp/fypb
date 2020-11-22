@@ -53,6 +53,12 @@
 
     </header>
 
+    <div class="navbar">
+        <a href="homepage.php">Home</a>
+        <a href="assets.php">Assets</a>
+        <a href="attendance.php">Attendance</a>
+    </div>
+    
     <div class="col-md-12">
         <?php
         if(isset($_SESSION["loginid"])){

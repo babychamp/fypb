@@ -51,6 +51,12 @@
 
     </header>
 
+    <div class="navbar">
+        <a href="homepage.php">Home</a>
+        <a href="register.php">Register</a>
+        <a href="attendance.php">Attendance</a>
+    </div>
+
     <?php
     if(isset($_SESSION["loginid"])){
     $id = $_SESSION["loginid"];
