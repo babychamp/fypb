@@ -130,7 +130,7 @@ echo'
   
 
 
-<br>
+<br><br>
   <label for="reason">Reason for checkout:</label>
   <select id="reason" name="reason">
     <option value="end">End of the day</option>
@@ -139,8 +139,7 @@ echo'
   </select>
   <br>
 
-
-<label for="description">If other reason, describe:</label><br>
+<label for="description">If other reason, please describe:</label><br>
 
 <textarea id="description" name="description" rows="3" cols="40"></textarea></br>
 
